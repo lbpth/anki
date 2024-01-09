@@ -1,0 +1,123 @@
+# Tạo cặp từ dạng Cloze Deletion trong Anki để ôn tập ghi nhớ
+# Bảng danh sách mã code ghi nhớ nhanh 00-99
+def generate_anki_cards(word_pairs):
+    anki_cards = []
+    for idx, word_pair in enumerate(word_pairs, start=1):
+        words = word_pair.split(" - ")
+        cloze_cards = [f"{{{{c{i}::{word}}}}}" for i, word in enumerate(words, start=1)]
+        cloze_question = " - ".join(cloze_cards)
+        anki_cards.append(f"{cloze_question}\n")
+    return anki_cards
+
+def export_to_anki_file(anki_cards, output_file):
+    with open(output_file, 'w', encoding='utf-8') as file:
+        for card in anki_cards:
+            file.write(card)
+
+if __name__ == "__main__":
+    word_pairs_input = [
+        "00 - Cái Khiên",
+        "01 - Cái Móc",
+        "02 - Cái Hộc Bàn",
+        "03 - Cái Bàn",
+        "04 - Cái Quạt",
+        "05 - Cái Nón",
+        "06 - Cái Sọt",
+        "07 - Cái Ly",
+        "08 - Cái Tivi",
+        "09 - Cái Chuông",
+        "10 - Máy Khoan",
+        "11 - Máy May",
+        "12 - Máy Hút",
+        "13 - Máy Bay",
+        "14 - Máy Quạt",
+        "15 - Máy Nén",
+        "16 - Máy Xay",
+        "17 - Máy Lạnh",
+        "18 - Máy Tính",
+        "19 - Máy Chiếu",
+        "20 - Hộp Khăn Giấy",
+        "21 - Hộp Mứt",
+        "22 - Hộp Hoa",
+        "23 - Hộp Bánh",
+        "24 - Hộp Quà",
+        "25 - Hộp Nuôi",
+        "26 - Hộp Sữa",
+        "27 - Hộp Ly",
+        "28 - Hộp Tăm",
+        "29 - Hộp Chia Thuốc",
+        "30 - Bánh Khọt",
+        "31 - Bánh Mì",
+        "32 - Bánh Hỏi",
+        "33 - Bánh Bao",
+        "34 - Bánh Quy",
+        "35 - Bánh Nếp",
+        "36 - Bánh Xe",
+        "37 - Bánh (f)Lăn",
+        "38 - Bánh Tét",
+        "39 - Bánh Chưng",
+        "40 - Quả Khế",
+        "41 - Quả Me",
+        "42 - Quả Hồng",
+        "43 - Quả Bóng",
+        "44 - Quả Quýt",
+        "45 - Quả Nho",
+        "46 - Quả Sầu Riêng",
+        "47 - Quả Lê",
+        "48 - Quả Ta",
+        "49 - Quả Chuối",
+        "50 - Nồi Kho",
+        "51 - Noi Men",
+        "52 - Nồi Hơi",
+        "53 - Nồi Buffet",
+        "54 - Nồi Quánh Bột |",
+        "55 - Nồi Nướng",
+        "56 - Nồi Siêu Tốc",
+        "57 - Nồi Lẩu",
+        "58 - Nồi Tiệt Trùng",
+        "59 - Nồi Chiên",
+        "60 - Xe Khách",
+        "61 - Xe Máy",
+        "62 - Xe Hơi",
+        "63 - Xe Ben",
+        "64 - Xe Quân Đôi",
+        "65 - Xe Nâng",
+        "66 - Xe Xúc",
+        "67 - Xe Lu",
+        "68 - Xe Tăng",
+        "69 - Xe Chữa Cháy",
+        "70 - Lá Khoai",
+        "71 - Lá Mầm",
+        "72 - Lá Hành",
+        "73 - Lá Bài",
+        "74 - Lá Quất",
+        "75 - Lá Nếp",
+        "76 - Lá Su",
+        "77 - Lá Lốt",
+        "78 - Lá Thư",
+        "79 - Lá Chuối",
+        "80 - Tàu Không Gian",
+        "81 - Tàu Mộc",
+        "82 - Tàu Hủ",
+        "83 - Tàu Bè",
+        "84 - Tàu Quân Sư",
+        "85 - Tàu Ngầm",
+        "86 - Tàu Sắt",
+        "87 - Tàu Lửa",
+        "88 - Tàu Titanic",
+        "89 - Tàu Chuối",
+        "90 - Con Khỉ",
+        "91 - Con Mèo",
+        "92 - Con Heo Đất",
+        "93 - Con Bò",
+        "94 - Con Quay",
+        "95 - Con Nai",
+        "96 - Con Sâu",
+        "97 - Con Lật Đật",
+        "98 - Con Tôm",
+        "99 - Con Chuột",
+        # Thêm các cặp từ khác nếu cần
+    ]
+
+    anki_cards_output = generate_anki_cards(word_pairs_input)
+    export_to_anki_file(anki_cards_output, "MemoryCode00-99forClozeDeletionAnki.txt")
